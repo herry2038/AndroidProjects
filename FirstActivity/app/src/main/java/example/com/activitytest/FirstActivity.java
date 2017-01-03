@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,14 +32,15 @@ public class FirstActivity extends AppCompatActivity {
                 //startActivity(intent) ;
 
                 // 3. 隐式Intent
-//                Intent intent = new Intent("com.example.activitytest.ACTION_START") ;
-//                intent.addCategory("com.example.activitytest.MY_CATEGORY") ;
-//                startActivity(intent) ;
+                Intent intent = new Intent("com.example.activitytest.ACTION_START") ;
+                intent.addCategory("com.example.activitytest.MY_CATEGORY") ;
+                //startActivity(intent) ;
+                startActivityForResult(intent, 1) ;  //  用于从intent指向的Activity中返回结果。
 
                 // 2.3.3 更多隐式Intent的用法
-                Intent intent = new Intent(Intent.ACTION_VIEW) ;
-                intent.setData(Uri.parse("http://www.baidu.com")) ;
-                startActivity(intent) ;
+//                Intent intent = new Intent(Intent.ACTION_VIEW) ;
+//                intent.setData(Uri.parse("http://www.baidu.com")) ;
+//                startActivity(intent) ;
             }
         });
     }
@@ -64,5 +66,19 @@ public class FirstActivity extends AppCompatActivity {
             default:
         }
         return true ;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch ( requestCode ) {
+            case 1:
+                if ( resultCode == RESULT_OK ) {
+                    String returnedData = data.getStringExtra("data_return") ;
+                    Log.d("FirstActivity", returnedData) ;
+                }
+                break ;
+            default:
+
+        }
     }
 }
