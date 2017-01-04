@@ -1,5 +1,8 @@
 package com.example.uiwigettest;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
+                // 编辑框
 //                String inputText = editText.getText().toString();
 //                imageView.setImageResource(R.drawable.img_2) ;
 //                Toast.makeText(MainActivity.this, inputText, Toast.LENGTH_SHORT).show();
@@ -41,9 +45,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                    progressBar.setVisibility(View.GONE);
 //                }
 
-                int progress = progressBar.getProgress() ;
-                progress = progress + 10 ;
-                progressBar.setProgress(progress) ;
+                // 进度条
+//                int progress = progressBar.getProgress() ;
+//                progress = progress + 10 ;
+//                progressBar.setProgress(progress) ;
+                // Alert Dialog
+//                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this) ;
+//                dialog.setTitle("This is Dialog") ;
+//                dialog.setMessage("Something important.") ;
+//                dialog.setCancelable(false) ;
+//                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                }) ;
+//                dialog.show() ;
+
+                // ProgressDialog
+                ProgressDialog progressDialog = new ProgressDialog(MainActivity.this) ;
+                progressDialog.setTitle("This is ProgressDialog") ;
+                progressDialog.setMessage("Loading...");
+                progressDialog.setCancelable(true) ;
+                progressDialog.show();
                 break ;
             default:
                 break ;
